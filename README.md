@@ -63,7 +63,7 @@ detona-ralph/
 
 ```bash
 # Clone o repositório (se estiver no GitHub)
-git clone [URL_DO_REPOSITORIO]
+git clone [[[URL_DO_REPOSITORIO]](https://github.com/galvaomaisti/Game-Detona-Ralph/edit/main/README.md)]
 
 # Navegue até a pasta do projeto
 cd detona-ralph
