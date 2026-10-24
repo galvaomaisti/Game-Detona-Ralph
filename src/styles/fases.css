@@ -1,0 +1,88 @@
+/* Estilos novos (HUD, telas, itens). Não altera o seu main.css. */
+:root {
+  --tijolo: #3b1d1a;
+  --ouro: #f2c230;
+  --felix: #3a7bd5;
+  --texto: #fff6e0;
+}
+
+.square { position: relative; cursor: pointer; touch-action: manipulation; user-select: none; }
+
+/* Félix: NÃO acertar. Bônus: acertar para ganhar. */
+.square.felix::after,
+.square.bonus-time::after,
+.square.bonus-life::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(32px, 8vw, 64px);
+  background: rgba(0, 0, 0, 0.35);
+}
+.square.felix::after      { content: "🔨"; box-shadow: inset 0 0 0 4px var(--felix); }
+.square.bonus-time::after { content: "⏱️"; box-shadow: inset 0 0 0 4px var(--ouro); }
+.square.bonus-life::after { content: "❤️"; box-shadow: inset 0 0 0 4px #e0414b; }
+
+.square.acerto { animation: pulo 0.2s; }
+.square.erro   { animation: tremer 0.25s; }
+@keyframes pulo   { 50% { transform: scale(1.12); } }
+@keyframes tremer { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  padding: 8px 12px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  color: var(--texto);
+  background: #000;
+  border: 1px solid #f3f712;
+  border-top: 0;
+}
+.hud b { color: var(--ouro); }
+.hud button, .overlay-card button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ouro);
+  color: var(--tijolo);
+  padding: 8px 14px;
+  font-size: 11px;
+}
+.hud button:hover, .overlay-card button:hover { filter: brightness(1.1); }
+.hud button:focus-visible, .overlay-card button:focus-visible { outline: 3px solid var(--felix); outline-offset: 2px; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 8, 6, 0.85);
+  padding: 16px;
+}
+.overlay.hidden { display: none; }
+.overlay-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 28px 24px;
+  text-align: center;
+  background: var(--tijolo);
+  color: var(--texto);
+  border: 4px solid var(--ouro);
+  border-radius: 10px;
+  font-family: "Press Start 2P", monospace;
+}
+.overlay-card h1 { font-size: 20px; line-height: 1.4; color: var(--ouro); margin-bottom: 16px; }
+.overlay-card p  { font-size: 11px; line-height: 1.9; margin-bottom: 22px; white-space: pre-line; }
+.overlay-card button { font-size: 13px; padding: 12px 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .square.acerto, .square.erro { animation: none; }
+}
