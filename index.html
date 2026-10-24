@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<!--  -->
-
 <head>
-    <!-- Settings -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detona Ralph</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detona Ralph</title>
 
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rekl="stylesheet" href="./src/styles/reset.css">
-    <link rel="stylesheet" href="./src/styles/main.css">
-
-   </head>
-
+  <!-- corrigido: era "rekl" -->
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/fases.css">
+</head>
 <body>
+  <div class="container">
+    <div class="game">
 
-    <div class="container">
-        <div class="game">
-            <div class="menu">
-                <div class="menu-time">
-                    <h2 style="color: red;">Time Left</h2>
-                    <h2 id="time-left">0</h2>
-                </div>
-                <div class="meu-score">
-                    <h2 style="color: green;">Score</h2>
-                    <h2 id="score">0</h2>
-                </div>
-                <div class="menu-lives">
-                    <img src="./src/images/player.png" alt="foto do jogador " height="50px" />
-                    <h2 id="xp">x3</h2>
-                </div>
-            </div>
-
-            <div class="panel">
-
-                <div class="panel-row">
-                    <div class="square" id="1"></div>
-                    <div class="square " id="2"></div>
-                    <div class="square " id="3"></div>
-                </div>
-                <div class="panel-row">
-                    <div class="square" id="4"></div>
-                    <div class="square" id="5"></div>
-                    <div class="square" id="6"></div>
-                </div>
-                <div class="panel-row">
-                    <div class="square" id="7"></div>
-                    <div class="square" id="8"></div>
-                    <div class="square" id="9"></div>
-                </div>
-            </div>
+      <div class="menu">
+        <div class="menu-time">
+          <h2 style="color: red;">Time Left</h2>
+          <h2 id="time-left">0</h2>
         </div>
-    </div>
-    <script defer src="./src/scripts/engine.js"></script>
-</body>
+        <div class="menu-score">
+          <h2 style="color: green;">Score</h2>
+          <h2 id="score">0</h2>
+        </div>
+        <div class="menu-lives">
+          <img src="./src/images/player.png" alt="foto do jogador" height="50px" />
+          <h2 id="xp">x3</h2>
+        </div>
+      </div>
 
+      <div class="hud">
+        <span>Fase <b id="level">1</b></span>
+        <span>Meta <b id="goal-progress">0/10</b></span>
+        <span>Combo <b id="combo">x1</b></span>
+        <span>Recorde <b id="best">0</b></span>
+        <button id="pause-button" type="button">Pausar</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-row">
+          <div class="square" id="1"></div>
+          <div class="square" id="2"></div>
+          <div class="square" id="3"></div>
+        </div>
+        <div class="panel-row">
+          <div class="square" id="4"></div>
+          <div class="square" id="5"></div>
+          <div class="square" id="6"></div>
+        </div>
+        <div class="panel-row">
+          <div class="square" id="7"></div>
+          <div class="square" id="8"></div>
+          <div class="square" id="9"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-card">
+      <h1 id="overlay-title">Detona Ralph</h1>
+      <p id="overlay-text"></p>
+      <button id="overlay-button" type="button">Começar</button>
+    </div>
+  </div>
+
+  <script defer src="./src/scripts/engine.js"></script>
+</body>
 </html>
