@@ -201,10 +201,13 @@ function onHit(square) {
   if (!v.running) return;
   const type = v.cells[square.id];
 
-  if (!type) { // clicou em quadrado vazio
+  if (!type) { // clicou em quadrado vazio: perde uma vida
+    v.lives--;
     v.combo = 0;
     flash(square, "erro");
+    playSound("erro");
     updateHud();
+    if (v.lives <= 0) loseLevel("Você errou o clique!");
     return;
   }
 
@@ -273,7 +276,7 @@ function initializeGame() {
   });
   updateHud();
   showOverlay("Detona Ralph",
-    "Clique no Ralph antes que ele fuja!\nNão acerte o Félix 🔨\n⏱️ = +5s   ❤️ = +1 vida\nAcertos seguidos aumentam o combo.\n\n5 fases. Boa sorte!",
+    "Clique no Ralph antes que ele fuja!\nNão acerte o Félix 🔨 nem quadrados vazios:\ncada erro custa uma vida!\n⏱️ = +5s   ❤️ = +1 vida\nAcertos seguidos aumentam o combo.\n\n5 fases. Boa sorte!",
     "Começar", newGame);
 }
 
