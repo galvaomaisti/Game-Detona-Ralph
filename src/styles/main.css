@@ -1,12 +1,18 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; /* era height: com HUD novo o conteúdo pode passar de 100vh */
     background-image: url("../images/wall.png");
 }
 
-.menu {
+/* .game agora ocupa o espaço restante para o .panel centralizar o tabuleiro */
+.game {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 
+.menu {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -25,14 +31,13 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-
 }
 
 .square {
     width: 150px;
     height: 150px;
     background-color: #88dfaf;
-    border-radius: 1px solid #000;
+    border: 1px solid #000; /* era "border-radius: 1px solid #000" (inválido) */
     margin: 2px;
 }
 
@@ -52,7 +57,7 @@
 }
 
 .menu-time h2:nth-child(2),
-.meu-score h2:nth-child(2) {
+.menu-score h2:nth-child(2) { /* era .meu-score */
     margin-top: 1rem;
     display: flex;
     align-items: center;
@@ -66,45 +71,27 @@
     justify-content: center;
 }
 
+/* Responsivo: tamanho proporcional à tela, sem estourar 3 colunas */
 @media screen and (max-width: 768px) {
-  .square {
-    width: 12vw;
-    height: 12vw;
-  }
-  .menu {
-    height: auto;
-    padding: 10px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .square {
-    width: 10vw;
-    height: 10vw;
-  }
-  .menu {
-    height: auto;
-    padding: 5px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-    .container {
-        grid-template-columns: repeat(2, 80px);
-        grid-template-rows: repeat(3, 40px);
-    }
-
     .square {
-        width: 80px;
-        height: 80px;
+        width: min(28vw, 150px);
+        height: min(28vw, 150px);
     }
+    .menu {
+        height: auto;
+        padding: 10px;
+    }
+    .menu h2 {
+        font-size: 14px;
+    }
+}
 
+@media screen and (max-width: 480px) {
     .menu {
         flex-direction: column;
-        height: auto;
+        gap: 6px;
         padding: 5px;
     }
-
     .menu-lives img {
         width: 25px;
         height: 25px;
