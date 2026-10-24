@@ -201,7 +201,7 @@ function onHit(square) {
   if (!v.running) return;
   const type = v.cells[square.id];
 
-  if (!type) { // clicou em quadrado vazio: perde uma vida
+    if (!type) { // clicou em quadrado vazio: perde uma vida
     v.lives--;
     v.combo = 0;
     flash(square, "erro");
